@@ -35,7 +35,7 @@ exec('git commit -m "deploy"', (error, stdout, stderr) => {
     console.log(`stdout: ${stdout}`);
 });
 
-exec("git checkout -B _deploy && git push heroku integration", (error, stdout, stderr) => {
+exec("git checkout -B _deploy && git push origin _deploy", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
