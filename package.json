@@ -1,0 +1,13 @@
+{
+  "name": "dev-portal",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "node deploy.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+}
