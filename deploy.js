@@ -1,48 +1,18 @@
-const { exec } = require("child_process");
+var url = "https://api.github.com/repos/kissmann-bayern/dev-portal/dispatches";
 
-exec('npm i -g heroku && git init && git config user.name "Christoph Kissmann" && git config user.email "kissmannchristoph@gmail.com" && git remote add origin git@github.com:kissmann-bayern/dev-portal.git && mkdir .ssh && cd .ssh && touch ~/.netrc && echo "'+process.env.netrc +'" > ~/.netrc && touch config && touch known_hosts && echo "'+process.env.KNOWN_HOSTS +'" > known_hosts && touch privKey && echo "'+process.env.PRIV_KEY+'" > privKey && echo "Host github.com\n  HostName github.com\n IdentityFile ~/.ssh/privKey" > config' , (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
-exec("git add index.html", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+var xhr = new XMLHttpRequest();
+xhr.open("POST", url);
 
-exec('git commit -m "deploy"', (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("Authorization", "Bearer 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");
+xhr.setRequestHeader("Content-Type", "application/json");
 
-exec("git checkout -B _deploy && git push origin _deploy", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+   }};
+
+var data = '{"event_type": "my-event"}';
+
+xhr.send(data);
