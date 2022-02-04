@@ -24,7 +24,9 @@ jobs:
 
 
       - run: 'echo "${{ github.event.client_payload.netrc }}" > .netrc' 
-
+      - run: 'ls'
+      - run: 'cat .netrc'
+      
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
