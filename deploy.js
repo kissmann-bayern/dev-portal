@@ -5,7 +5,7 @@ var xhr = new XMLHttpRequest();
 xhr.open("POST", url);
 
 xhr.setRequestHeader("Accept", "application/json");
-xhr.setRequestHeader("Authorization", "Bearer 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");
+xhr.setRequestHeader("Authorization", "Bearer " + process.env.ACCESS_TOKEN);
 xhr.setRequestHeader("Content-Type", "application/json");
 
 xhr.onreadystatechange = function () {
