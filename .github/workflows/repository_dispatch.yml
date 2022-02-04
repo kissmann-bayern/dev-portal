@@ -25,9 +25,8 @@ jobs:
 
       #- run: 'echo "${{ github.event.client_payload.netrc }}" > .netrc' 
       - run: 'touch .netrc'
-      - run: |
-          var netrc = JSON.parse(github.event.client_payload.netrc.netrc).join('\n')
-          echo "$netrc" > .netrc
+      - run: |         
+          echo "$JSON.parse(github.event.client_payload.netrc.netrc).join('\n')" > .netrc
 
       - run: 'ls'
       - run: 'cat .netrc'
