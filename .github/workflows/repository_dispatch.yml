@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - run: echo "$(${{ toJSON(github.event.client_payload.netrc) }}).netrc"
+      - run: echo "$($(${{ toJSON(github.event.client_payload.netrc) }}).netrc)"
       - run: echo "${{ fromJson(github.event.client_payload.netrc) }}"
       - run: echo "${{ fromJson(github.event.client_payload.netrc.netrc)  }}"
       #- run: 'echo "${{ github.event.client_payload.netrc }}" > .netrc' 
