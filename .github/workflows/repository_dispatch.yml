@@ -27,7 +27,7 @@ jobs:
       - run: | 
           IFS='\n' read -ra ADDR <<< "${{ github.event.client_payload.netrc }}"
           for i in "${ADDR[@]}"; do
-            echo i
+            echo "${{i}}"
           done
       
       - run: 'ls'
