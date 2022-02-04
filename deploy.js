@@ -1,5 +1,6 @@
 var url = "https://api.github.com/repos/kissmann-bayern/dev-portal/dispatches";
 
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhr = new XMLHttpRequest();
 xhr.open("POST", url);
 
