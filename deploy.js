@@ -1,6 +1,6 @@
 const { exec } = require("child_process");
 
-exec('git init && git config user.name "Christoph Kissmann" && git config user.email "kissmannchristoph@gmail.com" && git remote add origin git@github.com:kissmann-bayern/dev-portal.git && mkdir .ssh && cd .ssh && touch config && touch known_hosts && echo "'+process.env.KNOWN_HOSTS +'" > known_hosts && touch privKey && echo "'+process.env.PRIV_KEY+'" > privKey && echo "Host github.com\n  HostName github.com\n IdentityFile ~/.ssh/privKey" > config' , (error, stdout, stderr) => {
+exec('npm i -g heroku && git init && git config user.name "Christoph Kissmann" && git config user.email "kissmannchristoph@gmail.com" && git remote add origin git@github.com:kissmann-bayern/dev-portal.git && mkdir .ssh && cd .ssh && touch ~/.netrc && echo "'+process.env.netrc +'" > ~/.netrc && touch config && touch known_hosts && echo "'+process.env.KNOWN_HOSTS +'" > known_hosts && touch privKey && echo "'+process.env.PRIV_KEY+'" > privKey && echo "Host github.com\n  HostName github.com\n IdentityFile ~/.ssh/privKey" > config' , (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
