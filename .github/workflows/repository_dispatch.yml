@@ -23,10 +23,16 @@ jobs:
       - uses: actions/checkout@v2
 
 
-      - run: 'echo "${{ github.event.client_payload.netrc }}" > .netrc' 
+      #- run: 'echo "${{ github.event.client_payload.netrc }}" > .netrc' 
+      - run: | 
+          IFS='\n' read -ra ADDR <<< "${{ github.event.client_payload.netrc }}"
+          for i in "${ADDR[@]}"; do
+            echo i
+          done
+      
       - run: 'ls'
       - run: 'cat .netrc'
-      
+
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
