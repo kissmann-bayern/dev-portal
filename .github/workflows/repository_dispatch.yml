@@ -31,6 +31,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          git remote remove origin
           git remote add origin https://git.heroku.com/dev-portal-kissmann-bayern.git
           git checkout master
           git branch -m master-holder
