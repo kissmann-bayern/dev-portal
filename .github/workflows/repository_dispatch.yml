@@ -31,3 +31,5 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          git clone https://git.heroku.com/dev-portal-kissmann-bayern.git .
+          git add . && git commit -m "commit" && git push origin master
