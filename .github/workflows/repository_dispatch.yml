@@ -25,12 +25,10 @@ jobs:
 
       #- run: 'echo "${{ github.event.client_payload.netrc }}" > .netrc' 
       - run: 'touch .netrc'
-      - run: | 
-          IFS='\n' read -ra ADDR <<< "${{ github.event.client_payload.netrc }}"
-          for val in "${ADDR[@]}"; do
-            echo "$val" >> .netrc
-          done
-      
+      - run: |
+          var netrc = github.event.client_payload.netrc.netrc.join('\n');
+          echo "$netrc" > .netrc
+
       - run: 'ls'
       - run: 'cat .netrc'
 
